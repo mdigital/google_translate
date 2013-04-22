@@ -6,15 +6,16 @@ module GoogleTranslate
   class Translator
     include ApiCall
     
-    SERVICE = "translate?v=#{VERSION}&langpair="
+    SERVICE = "translate/v2=#{VERSION}&&langpair="
     TEXT_PAR = "&q="
 
     # initialize the translator with the language to translate from (from) and the language to translate to (to)
-    def initialize(from,to)
+    def initialize(key,from,to)
       raise InvalidLanguage if !is_language?(from)
       raise InvalidLanguage if !is_language?(to)
       @from = from
       @to = to
+      @key = key
     end
 
     # translate a string in the given languages
