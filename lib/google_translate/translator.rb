@@ -6,7 +6,7 @@ module GoogleTranslate
   class Translator
     include ApiCall
     
-    SERVICE = "translate/v2=#{VERSION}&&langpair="
+    SERVICE = "translate/v2?key="
     TEXT_PAR = "&q="
 
     # initialize the translator with the language to translate from (from) and the language to translate to (to)
@@ -23,7 +23,7 @@ module GoogleTranslate
     # - html: if html encoding is desirable (for immediate display on a web page for instance) 
     #           then this option needs to have a true value (:html => true)
     def translate(text, options = {})
-      response = google_api_call(text,"#{SERVICE}#{@from}%7C#{@to}#{TEXT_PAR}",TranslationResponse)
+      response = google_api_call(text,"#{SERVICE}#{@key}&source=#{@from}&target=#{@to}{TEXT_PAR}",TranslationResponse)
       translation = options[:html] ? response.translation : CGI.unescapeHTML(response.translation)
       translation # return value
     end
