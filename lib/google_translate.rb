@@ -10,7 +10,7 @@ require 'json'
 #
 # look at the Translator and LanguageDetect class (or README file) for instructions
 module GoogleTranslate
-  URL_STRING = "http://ajax.googleapis.com/ajax/services/language/"
+  URL_STRING = "https://www.googleapis.com/language/"
   VERSION = "1.0"
 end
 
